@@ -134,9 +134,9 @@ export const siteConfig: SiteConfig = {
     websiteUrl: "https://www.codetantra.com/",
   },
   archive: {
-    title: "Alumni Batch Archive (2024 Edition)",
-    batchRange: "Founding Senior Batch",
-    description: "Explore the founding chapter developed by our graduated seniors.",
+    title: "Previous Batch Archive (2024–2025)",
+    batchRange: "2024–2025 (Previous Year)",
+    description: "Explore the preceding club chapter and projects created by the 2024–2025 batch.",
     url: "https://pvp-csmcsd-hackathon-club.vercel.app/",
   },
   gallery: {

@@ -48,18 +48,18 @@ export const ProblemExplorer: React.FC = () => {
   };
 
   return (
-    <section id="problems" className="py-20 sm:py-28 relative z-10 builder-grid-bg" aria-labelledby="problems-heading">
+    <section id="problems" className="py-20 sm:py-28 relative z-10 builder-grid-bg border-t border-slate-200 dark:border-white/10" aria-labelledby="problems-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono-tag uppercase tracking-wider bg-[#FF5722]/10 text-[#FF6B35] border border-[#FF5722]/30 mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono-tag uppercase tracking-wider bg-orange-500/10 text-orange-600 dark:text-[#FF6B35] border border-orange-500/30 mb-3">
             <Sparkles className="w-3.5 h-3.5 text-[#FF5722]" />
             <span>Curated Challenge Curriculum</span>
           </div>
-          <h2 id="problems-heading" className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
+          <h2 id="problems-heading" className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
             45 Real-World Problem Statements
           </h2>
-          <p className="text-base sm:text-lg text-slate-300">
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300">
             A comprehensive catalog of AI, Full-Stack, and systems engineering challenges curated for IdeaStorm hackathons and semester prototype sprints.
           </p>
         </div>
@@ -74,12 +74,12 @@ export const ProblemExplorer: React.FC = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search challenges by keyword (e.g., ATS, Legal, Audio, Triage)..."
-              className="w-full pl-11 pr-10 py-3.5 rounded-xl builder-panel text-sm text-white placeholder-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5722] transition-all"
+              className="w-full pl-11 pr-10 py-3.5 rounded-2xl bg-white dark:bg-[#121418] text-sm text-slate-900 dark:text-white placeholder-slate-400 border border-slate-200 dark:border-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5722] transition-all shadow-xs"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-white"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white"
                 aria-label="Clear search"
               >
                 <X className="w-4 h-4" />
@@ -95,10 +95,10 @@ export const ProblemExplorer: React.FC = () => {
                 <button
                   key={track.id}
                   onClick={() => setSelectedTrack(track.id)}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                     isActive
-                      ? 'bg-[#FF5722] text-white font-bold shadow-sm'
-                      : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-white/5'
+                      ? 'bg-[#FF5722] text-white shadow-xs'
+                      : 'bg-white dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/5 shadow-2xs'
                   }`}
                 >
                   {track.label}
@@ -108,7 +108,7 @@ export const ProblemExplorer: React.FC = () => {
           </div>
 
           {/* Active Result Count & Reset */}
-          <div className="flex items-center justify-between text-xs text-slate-400 px-2 max-w-xl mx-auto w-full font-mono-tag">
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 px-2 max-w-xl mx-auto w-full font-mono-tag">
             <span>
               Showing {filteredProblems.length > 0 ? startIndex + 1 : 0}–
               {Math.min(startIndex + ITEMS_PER_PAGE, filteredProblems.length)} of {filteredProblems.length} challenges
@@ -119,7 +119,7 @@ export const ProblemExplorer: React.FC = () => {
                   setSelectedTrack('all');
                   setSearchQuery('');
                 }}
-                className="text-[#FF6B35] hover:underline"
+                className="text-orange-600 dark:text-[#FF6B35] hover:underline font-semibold"
               >
                 Reset filters
               </button>
@@ -134,34 +134,36 @@ export const ProblemExplorer: React.FC = () => {
               {currentProblems.map((prob) => (
                 <article
                   key={prob.id}
-                  className="builder-panel builder-panel-hover p-6 rounded-2xl flex flex-col justify-between"
+                  className="builder-panel builder-panel-hover p-6 rounded-3xl flex flex-col justify-between shadow-xs relative overflow-hidden group"
                 >
+                  <span className="absolute top-2 right-2 text-slate-400/20 dark:text-white/10 font-mono-tag text-[10px] select-none">+</span>
+
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-mono-tag text-[#FF6B35] font-bold">
+                      <span className="text-xs font-mono-tag text-orange-600 dark:text-[#FF6B35] font-black">
                         #{prob.number.toString().padStart(2, '0')}
                       </span>
-                      <span className="text-[11px] px-2.5 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/5">
+                      <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/5 font-semibold">
                         {prob.categoryLabel}
                       </span>
                     </div>
 
-                    <h3 className="text-base font-bold text-white mb-2 leading-snug">
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2 leading-snug">
                       {prob.title}
                     </h3>
 
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mb-4 line-clamp-4">
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal mb-4 line-clamp-4">
                       {prob.description}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-white/5 flex flex-wrap gap-1.5 items-center">
+                  <div className="pt-3 border-t border-slate-200 dark:border-white/5 flex flex-wrap gap-1.5 items-center">
                     {prob.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="inline-flex items-center gap-1 text-[10px] font-mono-tag text-slate-400 bg-white/5 px-2 py-0.5 rounded"
+                        className="inline-flex items-center gap-1 text-[10px] font-mono-tag text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded"
                       >
-                        <Tag className="w-2.5 h-2.5 text-[#FF6B35]" />
+                        <Tag className="w-2.5 h-2.5 text-orange-600 dark:text-[#FF6B35]" />
                         <span>{tag}</span>
                       </span>
                     ))}
@@ -172,8 +174,8 @@ export const ProblemExplorer: React.FC = () => {
 
             {/* Pagination Controls */}
             {totalPages > 1 && (
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl builder-panel max-w-2xl mx-auto">
-                <span className="text-xs text-slate-400 font-mono-tag">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-2xl builder-panel max-w-2xl mx-auto shadow-xs">
+                <span className="text-xs text-slate-500 dark:text-slate-400 font-mono-tag">
                   Page {currentPage} of {totalPages}
                 </span>
 
@@ -181,7 +183,7 @@ export const ProblemExplorer: React.FC = () => {
                   <button
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
-                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/5 text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-white/5 text-slate-800 dark:text-white border border-slate-200 dark:border-transparent hover:bg-slate-100 dark:hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-2xs"
                   >
                     <ChevronLeft className="w-4 h-4" />
                     <span>Previous</span>
@@ -192,10 +194,10 @@ export const ProblemExplorer: React.FC = () => {
                       <button
                         key={page}
                         onClick={() => handlePageChange(page)}
-                        className={`w-8 h-8 rounded-lg text-xs font-mono-tag font-bold transition-all ${
+                        className={`w-8 h-8 rounded-xl text-xs font-mono-tag font-bold transition-all ${
                           currentPage === page
-                            ? 'bg-[#FF5722] text-white'
-                            : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                            ? 'bg-[#FF5722] text-white shadow-xs'
+                            : 'bg-white dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-transparent hover:bg-slate-100 dark:hover:bg-white/10'
                         }`}
                       >
                         {page}
@@ -206,7 +208,7 @@ export const ProblemExplorer: React.FC = () => {
                   <button
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
-                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/5 text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-white/5 text-slate-800 dark:text-white border border-slate-200 dark:border-transparent hover:bg-slate-100 dark:hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-2xs"
                   >
                     <span>Next</span>
                     <ChevronRight className="w-4 h-4" />
@@ -216,10 +218,10 @@ export const ProblemExplorer: React.FC = () => {
             )}
           </div>
         ) : (
-          <div className="text-center py-16 p-8 rounded-2xl builder-panel max-w-md mx-auto">
-            <Code className="w-10 h-10 text-slate-500 mx-auto mb-3" />
-            <h4 className="text-base font-bold text-white mb-1">No matching challenges</h4>
-            <p className="text-xs text-slate-400 mb-4">
+          <div className="text-center py-16 p-8 rounded-3xl builder-panel max-w-md mx-auto shadow-xs">
+            <Code className="w-10 h-10 text-slate-400 mx-auto mb-3" />
+            <h4 className="text-base font-bold text-slate-900 dark:text-white mb-1">No matching challenges</h4>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
               Try searching with a different term or clear the current filter.
             </p>
             <button

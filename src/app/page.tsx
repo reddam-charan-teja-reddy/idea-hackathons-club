@@ -12,7 +12,7 @@ import { Footer } from '@/components/layout/Footer';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#07090E] text-[#F8FAFC]">
+    <div className="flex flex-col min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] transition-colors duration-200">
       {/* 1. Official Institutional Top Banner */}
       <InstitutionBanner />
 

@@ -1,85 +1,123 @@
 import React from 'react';
 import Image from 'next/image';
-import { GraduationCap, Users, Mail, ExternalLink, ShieldCheck, Sparkles, Building2 } from 'lucide-react';
+import { GraduationCap, Users, Mail, ExternalLink, ShieldCheck, Sparkles, Award } from 'lucide-react';
 import { teamData } from '@/data/team';
 
 export const LeadershipSection: React.FC = () => {
-  const { faculty, currentBatch, alumniBatch, centralCoordinator, headOfDepartment } = teamData;
+  const { departmentLeadership, facultyCoordinators, currentBatch, previousBatch } = teamData;
 
   return (
-    <section id="team" className="py-20 sm:py-28 relative z-10 border-t border-white/10 bg-[#0B0C0E]" aria-labelledby="team-heading">
+    <section id="team" className="py-20 sm:py-28 relative z-10 border-t border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#090A0E]" aria-labelledby="team-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono-tag uppercase tracking-wider bg-[#FF5722]/10 text-[#FF6B35] border border-[#FF5722]/30 mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono-tag uppercase tracking-wider bg-orange-500/10 text-orange-600 dark:text-[#FF6B35] border border-orange-500/30 mb-3">
             <Users className="w-3.5 h-3.5 text-[#FF5722]" />
-            <span>Club Leadership & Governance</span>
+            <span>Club Leadership & Mentorship</span>
           </div>
-          <h2 id="team-heading" className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
+          <h2 id="team-heading" className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
             Faculty Mentors & Student Core
           </h2>
-          <p className="text-base sm:text-lg text-slate-300">
-            Guided by departmental academic mentors and driven by an active 8-member student executive body across CSM and CSD branches.
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300">
+            Governed by departmental leadership and faculty mentors, driven by an active 8-member student executive committee across CSM and CSD.
           </p>
         </div>
 
-        {/* Central Mentorship Bar */}
-        <div className="mb-14 p-5 sm:p-6 rounded-2xl builder-panel border border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-          <div className="flex items-center gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-[#FF5722]/10 border border-[#FF5722]/25 flex items-center justify-center text-[#FF6B35] flex-shrink-0">
-              <Building2 className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-xs uppercase tracking-wider text-slate-400 font-bold block">
-                Department Leadership
-              </span>
-              <span className="text-sm sm:text-base font-bold text-white">
-                {headOfDepartment.name} — {headOfDepartment.designation}
-              </span>
-            </div>
+        {/* 1. Department Leadership & Central Coordination */}
+        <div className="mb-14">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <Award className="w-5 h-5 text-orange-600 dark:text-[#FF6B35]" />
+              <span>Department Leadership & Central Mentorship</span>
+            </h3>
+            <span className="text-xs font-mono-tag text-slate-500 dark:text-slate-400">
+              CSM & CSD Patronage
+            </span>
           </div>
-
-          <div className="text-xs sm:text-sm text-slate-400">
-            Central Clubs Coordination: <strong className="text-white">{centralCoordinator.name}</strong> ({centralCoordinator.experience})
-          </div>
-        </div>
-
-        {/* Faculty Coordinators (Dual Feature Cards) */}
-        <div className="mb-16">
-          <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-            <GraduationCap className="w-5 h-5 text-[#FF6B35]" />
-            <span>Faculty Coordinators</span>
-          </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {faculty.map((mentor) => (
+            {departmentLeadership.map((leader) => (
               <div
-                key={mentor.id}
-                className="builder-panel builder-panel-hover p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-center gap-6"
+                key={leader.id}
+                className="builder-panel builder-panel-hover p-6 sm:p-7 rounded-2xl flex flex-col sm:flex-row items-center gap-6 shadow-xs relative overflow-hidden group"
               >
-                {/* Photo Frame */}
-                <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-xl overflow-hidden border border-white/10 bg-[#16181F] flex-shrink-0 shadow-md">
+                {/* Tech card corner decoration */}
+                <span className="absolute top-2 right-2 text-slate-400/30 dark:text-white/10 font-mono-tag text-xs select-none">+</span>
+                
+                {/* Photo */}
+                <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-[#161820] flex-shrink-0 shadow-sm">
                   <Image
-                    src={mentor.photo}
-                    alt={mentor.name}
+                    src={leader.photo}
+                    alt={leader.name}
                     fill
-                    sizes="(max-width: 640px) 128px, 144px"
-                    className="object-cover object-top"
+                    sizes="(max-width: 640px) 112px, 128px"
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
 
                 {/* Details */}
                 <div className="flex-1 text-center sm:text-left">
-                  <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold font-mono-tag bg-[#FF5722]/10 text-[#FF6B35] border border-[#FF5722]/25 mb-2">
+                  <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold font-mono-tag bg-orange-500/10 text-orange-600 dark:text-[#FF6B35] border border-orange-500/25 mb-2">
+                    {leader.role}
+                  </span>
+                  <h4 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mb-1 tracking-tight">
+                    {leader.name}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-semibold mb-1">
+                    {leader.title}
+                  </p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 font-normal">
+                    {leader.department}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 2. Faculty Coordinators */}
+        <div className="mb-16">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <GraduationCap className="w-5 h-5 text-orange-600 dark:text-[#FF6B35]" />
+              <span>Faculty Coordinators</span>
+            </h3>
+            <span className="text-xs font-mono-tag text-slate-500 dark:text-slate-400">
+              Department Coordinators
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {facultyCoordinators.map((mentor) => (
+              <div
+                key={mentor.id}
+                className="builder-panel builder-panel-hover p-6 sm:p-7 rounded-2xl flex flex-col sm:flex-row items-center gap-6 shadow-xs relative overflow-hidden group"
+              >
+                <span className="absolute top-2 right-2 text-slate-400/30 dark:text-white/10 font-mono-tag text-xs select-none">+</span>
+                
+                {/* Photo Frame */}
+                <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-[#161820] flex-shrink-0 shadow-sm">
+                  <Image
+                    src={mentor.photo}
+                    alt={mentor.name}
+                    fill
+                    sizes="(max-width: 640px) 112px, 128px"
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+
+                {/* Details */}
+                <div className="flex-1 text-center sm:text-left">
+                  <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold font-mono-tag bg-blue-500/10 text-blue-600 dark:text-sky-400 border border-blue-500/25 mb-2">
                     {mentor.role}
                   </span>
-                  <h4 className="text-xl sm:text-2xl font-black text-white mb-1">
+                  <h4 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mb-1 tracking-tight">
                     {mentor.name}
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-300 font-medium mb-1">
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-semibold mb-1">
                     {mentor.title}
                   </p>
-                  <p className="text-xs text-slate-400 font-normal">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 font-normal">
                     {mentor.department}
                   </p>
                 </div>
@@ -88,14 +126,14 @@ export const LeadershipSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Student Coordinators (Current 2023–2027 Batch) */}
+        {/* 3. Student Coordinators (Current 2023–2027 Cohort) */}
         <div className="mb-16">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
-            <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-slate-300" />
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-orange-600 dark:text-[#FF6B35]" />
               <span>Student Coordinators ({currentBatch.academicYear})</span>
             </h3>
-            <span className="text-xs font-mono-tag text-slate-400">
+            <span className="text-xs font-mono-tag text-slate-500 dark:text-slate-400">
               Balanced 4 CSM + 4 CSD Coordinators
             </span>
           </div>
@@ -104,25 +142,27 @@ export const LeadershipSection: React.FC = () => {
             {currentBatch.members.map((coord) => (
               <div
                 key={coord.id}
-                className="builder-panel builder-panel-hover p-5 rounded-2xl flex flex-col items-center text-center justify-between"
+                className="builder-panel builder-panel-hover p-5 rounded-2xl flex flex-col items-center text-center justify-between shadow-xs relative overflow-hidden group"
               >
+                <span className="absolute top-2 right-2 text-slate-400/20 dark:text-white/10 font-mono-tag text-[10px] select-none">+</span>
+
                 <div className="flex flex-col items-center w-full">
-                  {/* Portrait or High-Quality Monogram Avatar Fallback */}
-                  <div className="relative w-24 h-24 rounded-2xl overflow-hidden mb-4 border border-white/10 bg-[#16181F] flex items-center justify-center shadow-sm">
+                  {/* Portrait or High-Quality Monogram Avatar */}
+                  <div className="relative w-24 h-24 rounded-2xl overflow-hidden mb-4 border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-[#161820] flex items-center justify-center shadow-xs">
                     {coord.photo ? (
                       <Image
                         src={coord.photo}
                         alt={coord.name}
                         fill
                         sizes="96px"
-                        className="object-cover object-top"
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                       />
                     ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center bg-[#181B22] text-[#FF6B35]">
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-slate-100 dark:bg-[#181B22] text-orange-600 dark:text-[#FF6B35]">
                         <span className="text-2xl font-black font-mono-tag">
                           {coord.initials}
                         </span>
-                        <span className="text-[10px] text-slate-400 uppercase tracking-widest mt-0.5 font-medium">
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-0.5 font-bold">
                           {coord.departmentCode}
                         </span>
                       </div>
@@ -130,27 +170,27 @@ export const LeadershipSection: React.FC = () => {
                   </div>
 
                   {/* Name */}
-                  <h4 className="text-sm sm:text-base font-bold text-white mb-1 line-clamp-1" title={coord.name}>
+                  <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white mb-1 line-clamp-1" title={coord.name}>
                     {coord.name}
                   </h4>
 
                   {/* Roll Number Badge */}
-                  <span className="text-xs font-mono-tag text-[#FF6B35] font-semibold mb-2">
+                  <span className="text-xs font-mono-tag text-orange-600 dark:text-[#FF6B35] font-semibold mb-2">
                     {coord.rollNumber}
                   </span>
 
                   {/* Department Badge */}
-                  <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-white/5 text-slate-300 border border-white/10 mb-3">
+                  <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 mb-3">
                     {coord.department}
                   </span>
                 </div>
 
-                {/* Email (Derived from roll number) */}
-                <div className="w-full pt-3 border-t border-white/5 flex items-center justify-center gap-1.5 text-xs text-slate-300">
-                  <Mail className="w-3.5 h-3.5 text-[#FF6B35] flex-shrink-0" />
+                {/* Email (Derived strictly from roll number) */}
+                <div className="w-full pt-3 border-t border-slate-200/80 dark:border-white/5 flex items-center justify-center gap-1.5 text-xs text-slate-600 dark:text-slate-300">
+                  <Mail className="w-3.5 h-3.5 text-orange-600 dark:text-[#FF6B35] flex-shrink-0" />
                   <a
                     href={`mailto:${coord.email}`}
-                    className="hover:text-white font-mono-tag truncate max-w-[180px] transition-colors"
+                    className="hover:text-orange-600 dark:hover:text-white font-mono-tag truncate max-w-[180px] transition-colors"
                     title={`Email ${coord.name}: ${coord.email}`}
                   >
                     {coord.email}
@@ -161,28 +201,28 @@ export const LeadershipSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Graduated Alumni Archive Redirect Banner */}
-        <div className="p-6 sm:p-8 rounded-2xl builder-panel border border-white/10 bg-[#121418] flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        {/* 4. Previous Batch (2024–2025) Archive Card */}
+        <div className="p-6 sm:p-8 rounded-2xl builder-panel border border-slate-200 dark:border-white/10 bg-white dark:bg-[#111319] flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left shadow-xs">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono-tag text-slate-300 bg-white/5 border border-white/10 mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#FF6B35]" />
-              <span>{alumniBatch.title}</span>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono-tag text-orange-600 dark:text-[#FF6B35] bg-orange-500/10 border border-orange-500/25 mb-2">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{previousBatch.title}</span>
             </div>
-            <h4 className="text-lg sm:text-xl font-bold text-white mb-1">
-              Founding Leadership ({alumniBatch.graduatedRange})
+            <h4 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1">
+              Previous Leadership ({previousBatch.batchYear})
             </h4>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              {alumniBatch.note}
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-xl">
+              {previousBatch.note}
             </p>
           </div>
 
           <a
-            href={alumniBatch.externalUrl}
+            href={previousBatch.externalUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold bg-[#FF5722] hover:bg-[#F4511E] text-white shadow-sm transition-all flex-shrink-0"
           >
-            <span>Visit 2024 Senior Site</span>
+            <span>Visit 2024–25 Batch Site</span>
             <ExternalLink className="w-4 h-4" />
           </a>
         </div>

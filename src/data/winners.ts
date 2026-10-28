@@ -13,9 +13,13 @@ export interface WinningTeam {
   projectName: string;
   domain: string;
   description: string;
+  photo: string;
+  driveFolderUrl: string;
   members: WinningMember[];
   badgeColor: string;
 }
+
+const DRIVE_WINNERS_FOLDER = "https://drive.google.com/drive/folders/1HICsMTS540axU-ctg_FUj4STZFJaizJT";
 
 export const podiumWinners: WinningTeam[] = [
   {
@@ -26,6 +30,8 @@ export const podiumWinners: WinningTeam[] = [
     prizeAmount: "₹5,000",
     projectName: "AI Contract & Legal Document Simplifier",
     domain: "LegalTech · GenAI · SaaS",
+    photo: "/images/winners/winner-elevatex.jpg",
+    driveFolderUrl: DRIVE_WINNERS_FOLDER,
     description:
       "Engineered an automated document intelligence system that analyzes complex rental agreements, freelance contracts, and TOS. Flags high-risk clauses in plain language, assigns vulnerability scores, and supports document-grounded natural language Q&A.",
     badgeColor: "amber",
@@ -44,6 +50,8 @@ export const podiumWinners: WinningTeam[] = [
     prizeAmount: "₹3,000",
     projectName: "AI Short Story Co-Writer with Plot Branching",
     domain: "Creative NLP · Interactive Fiction",
+    photo: "/images/winners/winner-squirrelcatchers.jpg",
+    driveFolderUrl: DRIVE_WINNERS_FOLDER,
     description:
       "A collaborative narrative ideation studio where creators start story premises and the AI generates branching story paths. Features an interactive visual story-tree node view and single-click manuscript compiler.",
     badgeColor: "slate",
@@ -62,9 +70,11 @@ export const podiumWinners: WinningTeam[] = [
     prizeAmount: "₹2,500",
     projectName: "AI Music Playlist Curator from Mood Description",
     domain: "Audio AI · Recommendation Engine",
+    photo: "/images/winners/winner-byteforce.jpg",
+    driveFolderUrl: DRIVE_WINNERS_FOLDER,
     description:
       "Translates abstract emotional vibes and sensory descriptions into hyper-curated music playlists, complete with track-by-track emotional justification and continuous conversational refinement.",
-    badgeColor: "emerald",
+    badgeColor: "orange",
     members: [
       { rollNo: "23501A4232", name: "M. Sriram", isLead: true },
       { rollNo: "23501A4247", name: "R. Sai Venkatesh" },
@@ -83,6 +93,8 @@ export const consolationWinners: WinningTeam[] = [
     prizeAmount: "₹1,000",
     projectName: "AI Debate Practice & Argument Strengthener",
     domain: "EdTech · Argumentation AI",
+    photo: "/images/winners/winner-aetherx.jpg",
+    driveFolderUrl: DRIVE_WINNERS_FOLDER,
     description: "Real-time debate sparring partner that spots logical fallacies and grades persuasive delivery.",
     badgeColor: "cyan",
     members: [
@@ -100,6 +112,8 @@ export const consolationWinners: WinningTeam[] = [
     prizeAmount: "₹1,000",
     projectName: "AI Essay Feedback & Grading Assistant",
     domain: "EdTech · Evaluation NLP",
+    photo: "/images/winners/winner-ctrlcreate.jpeg",
+    driveFolderUrl: DRIVE_WINNERS_FOLDER,
     description: "Evaluates academic papers against rubric criteria with inline structural suggestions.",
     badgeColor: "cyan",
     members: [
@@ -117,6 +131,8 @@ export const consolationWinners: WinningTeam[] = [
     prizeAmount: "₹1,000",
     projectName: "AI Habit-Building Coach with Behavioral Nudges",
     domain: "HealthTech · Behavioral Science",
+    photo: "/images/winners/winner-nextgenminds.jpg",
+    driveFolderUrl: DRIVE_WINNERS_FOLDER,
     description: "Generates scientifically calibrated daily micro-habits with shame-free recovery plans.",
     badgeColor: "cyan",
     members: [
@@ -134,6 +150,8 @@ export const consolationWinners: WinningTeam[] = [
     prizeAmount: "₹1,000",
     projectName: "AI Email Inbox Triage & Draft Assistant",
     domain: "Productivity · B2B SaaS",
+    photo: "/images/winners/winner-thinkexe.jpg",
+    driveFolderUrl: DRIVE_WINNERS_FOLDER,
     description: "Prioritizes high-importance emails and generates contextual replies matching the user's authentic tone.",
     badgeColor: "cyan",
     members: [
@@ -151,6 +169,8 @@ export const consolationWinners: WinningTeam[] = [
     prizeAmount: "₹1,000",
     projectName: "AI Lecture Notes Summarizer & Study Guide Builder",
     domain: "Education · GenAI",
+    photo: "/images/winners/winner-techtrekkers.jpg",
+    driveFolderUrl: DRIVE_WINNERS_FOLDER,
     description: "Synthesizes entire semester slide decks into concise, high-probability exam study guides.",
     badgeColor: "cyan",
     members: [
@@ -168,6 +188,8 @@ export const consolationWinners: WinningTeam[] = [
     prizeAmount: "₹1,000",
     projectName: "AI Medication Reminder & Interaction Explainer",
     domain: "Healthcare · Safety Assistant",
+    photo: "/images/winners/winner-shijin.jpg",
+    driveFolderUrl: DRIVE_WINNERS_FOLDER,
     description: "Patient companion explaining prescriptions in plain language with drug-drug interaction cautions.",
     badgeColor: "cyan",
     members: [
@@ -185,6 +207,8 @@ export const consolationWinners: WinningTeam[] = [
     prizeAmount: "₹1,000",
     projectName: "AI Job Interview Simulator",
     domain: "CareerTech · Voice & Text AI",
+    photo: "/images/winners/winner-fusioninnovaters.jpg",
+    driveFolderUrl: DRIVE_WINNERS_FOLDER,
     description: "Conducts adaptive mock technical and behavioral interviews with actionable feedback rubrics.",
     badgeColor: "cyan",
     members: [

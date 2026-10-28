@@ -1,23 +1,41 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
-    --bg-base: #0B0C0E;
-    --bg-surface: #121418;
-    --bg-surface-elevated: #171A21;
+    --bg-base: #F8FAFC;
+    --bg-surface: #FFFFFF;
+    --bg-surface-elevated: #F1F5F9;
+    --border-subtle: rgba(15, 23, 42, 0.08);
+    --border-strong: rgba(15, 23, 42, 0.16);
+    --accent-orange: #EA580C;
+    --accent-orange-hover: #C2410C;
+    --accent-blue: #0284C7;
+    --accent-gold: #D97706;
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+  }
+
+  .dark {
+    --bg-base: #090A0E;
+    --bg-surface: #111318;
+    --bg-surface-elevated: #161820;
     --border-subtle: rgba(255, 255, 255, 0.08);
     --border-strong: rgba(255, 255, 255, 0.16);
     --accent-orange: #FF5722;
     --accent-orange-hover: #F4511E;
-    --accent-gold: #D4AF37;
+    --accent-blue: #38BDF8;
+    --accent-gold: #F59E0B;
     --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
     --text-muted: #94A3B8;
   }
 
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
-    background-color: var(--bg-base);
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   body {
@@ -31,14 +49,19 @@
 
 /* Minimalist technical dot grid background */
 .builder-grid-bg {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
   background-size: 28px 28px;
+}
+
+.dark .builder-grid-bg {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
 }
 
 /* Grounded engineering card surface */
 .builder-panel {
-  background: #121418;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.2s ease-out;
 }
 
 .builder-panel-hover {
@@ -46,9 +69,13 @@
 }
 
 .builder-panel-hover:hover {
-  background: #171A21;
-  border-color: rgba(255, 87, 34, 0.35);
+  background: var(--bg-surface-elevated);
+  border-color: rgba(255, 87, 34, 0.4);
   transform: translateY(-2px);
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.15);
+}
+
+.dark .builder-panel-hover:hover {
   box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.6);
 }
 

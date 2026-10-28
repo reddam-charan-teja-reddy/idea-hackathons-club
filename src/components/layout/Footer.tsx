@@ -1,19 +1,19 @@
 import React from 'react';
 import Image from 'next/image';
-import { Mail, MapPin, ExternalLink } from 'lucide-react';
+import { Mail, MapPin, ExternalLink, History } from 'lucide-react';
 import { siteConfig } from '@/data/siteConfig';
 
 export const Footer: React.FC = () => {
   const { institution, club, contact, copyright } = siteConfig;
 
   return (
-    <footer className="w-full bg-[#050608] border-t border-white/10 text-slate-400 py-16 relative z-10" role="contentinfo">
+    <footer className="w-full bg-slate-900 dark:bg-[#050608] border-t border-slate-800 dark:border-white/10 text-slate-400 py-16 relative z-10" role="contentinfo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-14 border-b border-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-14 border-b border-slate-800 dark:border-white/5">
           {/* Column 1: Club Brand & Mission */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-[#16181F] border border-white/10 flex items-center justify-center p-1">
+              <div className="w-9 h-9 rounded-xl bg-slate-800 dark:bg-[#16181F] border border-slate-700 dark:border-white/10 flex items-center justify-center p-1">
                 <Image
                   src={club.logoImage}
                   alt={club.name}
@@ -39,34 +39,34 @@ export const Footer: React.FC = () => {
             <h4 className="text-xs font-bold uppercase tracking-widest text-white mb-4 font-mono-tag">
               Site Navigation
             </h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm text-slate-300">
               <li>
-                <a href="#about" className="hover:text-[#FF6B35] transition-colors">
+                <a href="#about" className="hover:text-[#FF5722] transition-colors">
                   Overview & Mission
                 </a>
               </li>
               <li>
-                <a href="#ideastorm" className="hover:text-[#FF6B35] transition-colors">
+                <a href="#ideastorm" className="hover:text-[#FF5722] transition-colors">
                   IdeaStorm 2026 Format
                 </a>
               </li>
               <li>
-                <a href="#winners" className="hover:text-[#FF6B35] transition-colors">
+                <a href="#winners" className="hover:text-[#FF5722] transition-colors">
                   Winning Teams Ledger
                 </a>
               </li>
               <li>
-                <a href="#problems" className="hover:text-[#FF6B35] transition-colors">
+                <a href="#problems" className="hover:text-[#FF5722] transition-colors">
                   45 Problem Statements
                 </a>
               </li>
               <li>
-                <a href="#team" className="hover:text-[#FF6B35] transition-colors">
+                <a href="#team" className="hover:text-[#FF5722] transition-colors">
                   Faculty & Student Team
                 </a>
               </li>
               <li>
-                <a href="#gallery" className="hover:text-[#FF6B35] transition-colors">
+                <a href="#gallery" className="hover:text-[#FF5722] transition-colors">
                   Event Photo Gallery
                 </a>
               </li>
@@ -76,15 +76,15 @@ export const Footer: React.FC = () => {
           {/* Column 3: Institutional Portals */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-white mb-4 font-mono-tag">
-              College Portals
+              Institutional Links
             </h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm text-slate-300">
               <li>
                 <a
                   href={institution.portals.main}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 hover:text-[#FF6B35] transition-colors"
+                  className="inline-flex items-center gap-1.5 hover:text-[#FF5722] transition-colors"
                 >
                   <span>PVPSIT Official Portal</span>
                   <ExternalLink className="w-3 h-3" />
@@ -95,7 +95,7 @@ export const Footer: React.FC = () => {
                   href={institution.portals.csm}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 hover:text-[#FF6B35] transition-colors"
+                  className="inline-flex items-center gap-1.5 hover:text-[#FF5722] transition-colors"
                 >
                   <span>CSE (AI & ML) Department</span>
                   <ExternalLink className="w-3 h-3" />
@@ -106,7 +106,7 @@ export const Footer: React.FC = () => {
                   href={institution.portals.csd}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 hover:text-[#FF6B35] transition-colors"
+                  className="inline-flex items-center gap-1.5 hover:text-[#FF5722] transition-colors"
                 >
                   <span>CSE (Data Science) Department</span>
                   <ExternalLink className="w-3 h-3" />
@@ -117,9 +117,10 @@ export const Footer: React.FC = () => {
                   href={siteConfig.archive.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-[#FF6B35] hover:text-white font-semibold"
+                  className="inline-flex items-center gap-1.5 text-orange-400 hover:text-white font-semibold transition-colors"
                 >
-                  <span>Alumni Batch Archive (2024)</span>
+                  <History className="w-3.5 h-3.5" />
+                  <span>Previous Batch (2024–2025) Archive</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
@@ -139,7 +140,7 @@ export const Footer: React.FC = () => {
             </div>
             <div className="flex items-center gap-2.5 text-xs text-slate-300 pt-1">
               <Mail className="w-4 h-4 text-[#FF5722] flex-shrink-0" />
-              <a href={`mailto:${contact.officialEmail}`} className="hover:text-[#FF6B35] transition-colors font-mono-tag">
+              <a href={`mailto:${contact.officialEmail}`} className="hover:text-[#FF5722] transition-colors font-mono-tag">
                 {contact.officialEmail}
               </a>
             </div>
@@ -149,7 +150,7 @@ export const Footer: React.FC = () => {
                 {contact.socials.map((social) => (
                   <span
                     key={social.platform}
-                    className="text-[10px] font-mono-tag px-2 py-0.5 rounded bg-white/5 text-slate-400 border border-white/5"
+                    className="text-[10px] font-mono-tag px-2 py-0.5 rounded bg-slate-800 dark:bg-white/5 text-slate-400 border border-slate-700 dark:border-white/5"
                     title="Community channel launching soon"
                   >
                     {social.label} (Soon)

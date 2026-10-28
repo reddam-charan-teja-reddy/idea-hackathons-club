@@ -23,6 +23,7 @@ export interface HackathonEvent {
   stages: HackathonStage[];
   rules: string[];
   coverImage: string;
+  posterImage: string;
   galleryDriveUrl: string;
   status: 'completed' | 'upcoming';
 }
@@ -46,6 +47,7 @@ export const eventData: HackathonEvent = {
   ],
   totalProblemPool: 45,
   coverImage: "/images/events/ideastorm-capture.jpeg",
+  posterImage: "/images/events/poster.png",
   galleryDriveUrl: "https://drive.google.com/drive/folders/1HICsMTS540axU-ctg_FUj4STZFJaizJT",
   status: "completed",
   stages: [

@@ -6,6 +6,7 @@ export interface FacultyMentor {
   department: string;
   photo: string;
   hasLocalPhoto: boolean;
+  highlight?: boolean;
 }
 
 export interface StudentCoordinator {
@@ -21,50 +22,52 @@ export interface StudentCoordinator {
 }
 
 export interface TeamData {
-  faculty: FacultyMentor[];
-  centralCoordinator: {
-    name: string;
-    designation: string;
-    department: string;
-    experience: string;
-  };
-  headOfDepartment: {
-    name: string;
-    designation: string;
-    departments: string;
-  };
+  departmentLeadership: FacultyMentor[];
+  facultyCoordinators: FacultyMentor[];
   currentBatch: {
     academicYear: string;
     title: string;
+    badge: string;
     members: StudentCoordinator[];
   };
-  alumniBatch: {
+  previousBatch: {
     title: string;
-    graduatedRange: string;
+    batchYear: string;
     note: string;
     externalUrl: string;
   };
 }
 
 export const teamData: TeamData = {
-  centralCoordinator: {
-    name: "Dr. J. Sirisha",
-    designation: "Associate Professor & Central Clubs Coordinator",
-    department: "Department of CSD & CSM",
-    experience: "22+ Years at PVPSIT",
-  },
-  headOfDepartment: {
-    name: "Dr. B. Janakiramaiah",
-    designation: "Professor & Head of the Department",
-    departments: "CSE (AI & ML) and CSE (Data Science)",
-  },
-  faculty: [
+  departmentLeadership: [
+    {
+      id: "hod-janakiramaiah",
+      name: "Dr. B. Janakiramaiah",
+      title: "Professor & Head of the Department",
+      role: "Head of the Department",
+      department: "Dept. of CSE (AI&ML) & CSE (Data Science)",
+      photo: "/images/team/hod-janakiramaiah.jpg",
+      hasLocalPhoto: true,
+      highlight: true,
+    },
+    {
+      id: "faculty-sirisha",
+      name: "Dr. J. Sirisha",
+      title: "Associate Professor",
+      role: "Central Clubs Coordinator",
+      department: "Dept. of CSE (Data Science) & CSE (AI&ML)",
+      photo: "/images/team/faculty-sirisha.jpg",
+      hasLocalPhoto: true,
+      highlight: true,
+    },
+  ],
+  facultyCoordinators: [
     {
       id: "faculty-haritha",
       name: "Dr. A. Haritha",
-      title: "Assistant Professor",
+      title: "Associate Professor",
       role: "Faculty Coordinator",
-      department: "Dept. of CSE (AI & ML / DS)",
+      department: "Dept. of CSE (AI & ML) and CSE (Data Science)",
       photo: "/images/team/faculty-haritha.jpg",
       hasLocalPhoto: true,
     },
@@ -73,7 +76,7 @@ export const teamData: TeamData = {
       name: "Mrs. P. Nagamani",
       title: "Assistant Professor",
       role: "Faculty Coordinator",
-      department: "Dept. of CSE (AI & ML / DS)",
+      department: "Dept. of CSE (AI & ML) and CSE (Data Science)",
       photo: "/images/team/faculty-nagamani.jpg",
       hasLocalPhoto: true,
     },
@@ -81,6 +84,7 @@ export const teamData: TeamData = {
   currentBatch: {
     academicYear: "2023–2027",
     title: "Active Student Leadership",
+    badge: "Current 2023–2027 Batch",
     members: [
       {
         id: "coord-01",
@@ -172,10 +176,10 @@ export const teamData: TeamData = {
       },
     ],
   },
-  alumniBatch: {
-    title: "Founding Seniors Batch",
-    graduatedRange: "Class of 2024 / Graduated",
-    note: "Recognizing our graduated founding leaders: Jakkamsetti Madhavan, Mudigonda Naga Bhanuteja Sharma, Akshitha Ponna, and Aaisha Sultana Guduru.",
+  previousBatch: {
+    title: "Previous Batch Leadership",
+    batchYear: "2024–2025 (Previous Batch)",
+    note: "Recognizing our 2024–2025 founding executive committee: Jakkamsetti Madhavan, Mudigonda Naga Bhanuteja Sharma, Akshitha Ponna, and Aaisha Sultana Guduru.",
     externalUrl: "https://pvp-csmcsd-hackathon-club.vercel.app/",
   },
 };
