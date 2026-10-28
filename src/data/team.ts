@@ -127,7 +127,7 @@ export const teamData: TeamData = {
         departmentCode: "CSM",
         batch: "2023–2027",
         email: "23501a4260@pvpsit.ac.in",
-        photo: null,
+        photo: "/images/team/coord-rekha.jpeg",
         initials: "VR",
       },
       {
